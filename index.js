@@ -22,12 +22,6 @@ app.post('/upload', multer({
     .single('file'),
     (req, res) => {
 
-        aws.config.update({
-            secretAccessKey: process.env.S3_SECRET,
-            accessKeyId: process.env.S3_ACCESS_KEY,
-            region: "us-east-1",
-        });
-
         console.log(req.file);
 
         if (!req.file) return res.status(400).json({
